@@ -164,6 +164,14 @@ $(document).ready(function() {
     });
   });
 
+  //Squarespace headers
+  $('.folder, .folder-parent').click(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 2
+    });
+  });
+
   //Once the user moves the mouse, it initializes the game session if unitialized
   $('body').mousemove(function() {
     if (session_init == 0) {
