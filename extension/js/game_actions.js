@@ -18,5 +18,5 @@ $(document).ready(function() {
 
 function setBadge(level) {
   var iconL = parseInt(level)%6;
-  $('.icon_container img').attr('src', 'icons/ranks/Tier' + (parseInt(level)%5) + '.png');
+  $('.icon_container img').attr('src', 'icons/ranks/Tier' + parseInt(level) + '.png');
 }

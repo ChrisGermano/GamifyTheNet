@@ -6,6 +6,7 @@ chrome.runtime.onMessage.addListener(
         if (parseInt(result.data_init) != 1) {
           chrome.storage.local.set({'xp': '0'}, function() {});
           chrome.storage.local.set({'level': '1'}, function() {});
+          chrome.storage.local.set({'rank': '1'}, function() {});
           chrome.storage.local.set({'title': 'Newbie'}, function() {});
           chrome.storage.local.set({'data_init':'1'}, function() {});
         }
@@ -30,6 +31,7 @@ chrome.runtime.onMessage.addListener(
       var current_xp;
       var max_xp;
       var level;
+      var rank;
       var title;
 
       chrome.storage.local.get('xp', function(result) {
@@ -38,19 +40,33 @@ chrome.runtime.onMessage.addListener(
         chrome.storage.local.get('level', function(result) {
           level = parseInt(result.level);
 
-          max_xp = 2 * Math.pow(parseInt(level), 3);
+          chrome.storage.local.get('rank', function(result) {
+            rank = parseInt(result.rank);
 
-          while (current_xp >= max_xp) {
-            level = level + 1;
-            level = Math.Min(level,5);
-            current_xp = current_xp - max_xp;
-            max_xp = 2 * Math.pow(level, 3);
-            UpdateTitle(level);
-          }
+            max_xp = 2 * Math.pow(parseInt(level), 3);
 
-          chrome.storage.local.set({'xp': current_xp}, function() {});
-          chrome.storage.local.set({'level': level}, function() {});
-          chrome.storage.local.set({'title': title}, function() {});
+            if (current_xp >= max_xp) {
+              rank = rank + 1;
+              if (rank>5) {
+                level = level + 1;
+                rank = 1;
+              }
+              if (level>5) {
+                level = 5;
+              }
+
+              current_xp = current_xp - max_xp;
+              max_xp = 2 * Math.pow(level+rank, 3);
+              UpdateTitle(level, rank);
+              alert(current_xp + " " + max_xp + " " + level + " " + rank);
+            }
+
+            chrome.storage.local.set({'xp': current_xp}, function() {});
+            chrome.storage.local.set({'level': level}, function() {});
+            chrome.storage.local.set({'rank': rank}, function() {});
+            chrome.storage.local.set({'title': title}, function() {});
+
+          });
 
         });
       });
@@ -58,50 +74,50 @@ chrome.runtime.onMessage.addListener(
   }
 );
 
-function UpdateTitle(level) {
-  var rank = level%5;
-  var rankTitle = Math.floor(level/5);
-  switch (rankTitle) {
-    case 0:
-      rankTitle = 'Newbie';
-      break;
+function UpdateTitle(level, rank) {
+  var rankT, levelT;
+
+  switch (level) {
     case 1:
-      rankTitle = 'Surfer';
+      levelT = 'Newbie';
       break;
     case 2:
-      rankTitle = 'Millenial';
+      levelT = 'Surfer';
       break;
     case 3:
-      rankTitle = 'Troll';
+      levelT = 'Millenial';
       break;
     case 4:
-      rankTitle = 'Global Moderator';
+      levelT = 'Global Moderator';
+      break;
+    case 5:
+      levelT = 'Supreme Creator';
       break;
     default:
-      rankTitle = 'Supreme Creator';
+      levelT = 'Extension Hacker';
       break;
   }
 
   switch (rank) {
-    case 0:
-      rank = 'V';
-      break;
     case 1:
-      rank = 'I';
+      rankT = 'I';
       break;
     case 2:
-      rank = 'II';
+      rankT = 'II';
       break;
     case 3:
-      rank = 'III';
+      rankT = 'III';
       break;
     case 4:
-      rank = 'IV';
+      rankT = 'IV';
+      break;
+    case 5:
+      rankT = 'V';
       break;
     default:
-      rank = '';
+      rankT = '';
       break;
   }
 
-  chrome.storage.local.set({'title': (rankTitle + ' ' + rank)}, function() {});
+  chrome.storage.local.set({'title': (levelT + ' ' + rankT)}, function() {});
 }
