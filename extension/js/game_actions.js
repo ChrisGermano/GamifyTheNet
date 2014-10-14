@@ -1,17 +1,25 @@
 //Popup script
 
 $(document).ready(function() {
+  var cxp,fxp;
+
   chrome.storage.local.get('title', function(result) {
     $('.pt').text(result.title);
   });
   chrome.storage.local.get('level', function(result) {
+    var lvl = parseInt(result.level);
     $('.pl').text(result.level);
     setBadge(result.level);
-    var mxp = 2 * Math.pow(parseInt(result.level), 3);
-    $('.mxp').text(mxp);
-  });
-  chrome.storage.local.get('xp', function(result) {
-    $('.cxp').text(result.xp);
+    chrome.storage.local.get('rank', function(result) {
+      var mxp = 2 * Math.pow(parseInt(lvl + parseInt(result.rank)), 3);
+      fxp = parseInt(mxp);
+      $('.mxp').text(mxp);
+      chrome.storage.local.get('xp', function(result) {
+        $('.cxp').text(result.xp);
+        cxp = parseInt(result.xp);
+        $('.xp_bar').attr('style', 'width: ' + 100*(parseFloat(cxp)/parseFloat(fxp)) + '%');
+      });
+    });
   });
 
 });

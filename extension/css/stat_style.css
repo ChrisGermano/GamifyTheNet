@@ -43,11 +43,13 @@
 .xp_bar_full {
   width: 190px;
   height: 30px;
+  background-color: #f00;
+  margin: auto;
 }
 
 .xp_bar {
   height: 30px;
-  width: 0px;
+  background-color: #0f0;
 }
 
 .level_details {
