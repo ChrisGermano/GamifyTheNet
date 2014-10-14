@@ -1,0 +1,73 @@
+.stat_container {
+  width: 300px;
+  height: 100px;
+}
+
+.icon_container {
+  width: 100px;
+  height: 100px;
+  display: block;
+  float: left;
+  background-color: #ccc;
+}
+
+.icon_container img {
+  width: 100px;
+  height: 100px;
+}
+
+.data_container {
+  width: 200px;
+  height: 100px;
+  display: block;
+  float: left;
+  background-color: #ddd;
+}
+
+.player_title {
+  width: 200px;
+  height: 30px;
+}
+
+.pt {
+  width: 100%;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.xp_container {
+  width: 200px;
+  height: 40px;
+}
+
+.xp_bar_full {
+  width: 190px;
+  height: 30px;
+}
+
+.xp_bar {
+  height: 30px;
+  width: 0px;
+}
+
+.level_details {
+  height: 30px;
+  width: 200px;
+}
+
+.level_details div {
+  text-align: center;
+  margin: auto;
+}
+
+.player_level {
+  float: left;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+.player_xp {
+  float: right;
+  padding-top: 5px;
+  padding-right: 10px;
+}
