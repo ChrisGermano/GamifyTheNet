@@ -123,6 +123,46 @@ $(document).ready(function() {
     });
   });
 
+  //Gamejolt rate game
+  $('.rating-control a').click(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 5
+    });
+  });
+
+  //Gamasutra article
+  $('.story-title a').click(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 6
+    });
+  });
+
+  //Glassknuckle subscribe
+  $('#mc-embedded-subscribe').click(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 18
+    });
+  });
+
+  //Grapplehook subscribe
+  $('#follow-button').click(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 12
+    });
+  });
+
+  //Grapplehook aboue
+  $('.last a').click(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 4
+    });
+  });
+
   //Once the user moves the mouse, it initializes the game session if unitialized
   $('body').mousemove(function() {
     if (session_init == 0) {
