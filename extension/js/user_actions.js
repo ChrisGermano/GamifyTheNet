@@ -9,6 +9,7 @@ $(document).ready(function() {
 
   var session_init = 0;
 
+  //Esc nukes stored data
   $(document).keyup(function(e) {
     if (e.keyCode == 27) {
       chrome.runtime.sendMessage({
@@ -33,19 +34,19 @@ $(document).ready(function() {
     });
   });
 
-  //
-  $('#sharelink_').submit(function() {
-    chrome.runtime.sendMessage({
-      action: 'GainXP',
-      value: 25
-    });
-  });
-
   //Youtube like
   $('#watch-like').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
       value: 2
+    });
+  });
+
+  //Youtube dislike
+  $('#watch-dislike').click(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 1
     });
   });
 

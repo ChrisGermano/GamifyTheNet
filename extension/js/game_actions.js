@@ -11,7 +11,7 @@ $(document).ready(function() {
     $('.pl').text(result.level);
     setBadge(result.level);
     chrome.storage.local.get('rank', function(result) {
-      var mxp = 2 * Math.pow(parseInt(lvl + parseInt(result.rank)), 3);
+      var mxp = Math.pow(lvl+1, result.rank);
       fxp = parseInt(mxp);
       $('.mxp').text(mxp);
       chrome.storage.local.get('xp', function(result) {

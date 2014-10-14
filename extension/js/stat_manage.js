@@ -43,7 +43,7 @@ chrome.runtime.onMessage.addListener(
           chrome.storage.local.get('rank', function(result) {
             rank = parseInt(result.rank);
 
-            max_xp = 2 * Math.pow(parseInt((level+rank)), 3);
+            max_xp = Math.pow(level+1,rank);
 
             if (current_xp >= max_xp) {
               rank = rank + 1;
@@ -56,7 +56,7 @@ chrome.runtime.onMessage.addListener(
               }
 
               current_xp = current_xp - max_xp;
-              max_xp = 2 * Math.pow((level+rank), 3);
+              max_xp = Math.pow(level+1,rank);
               UpdateTitle(level, rank);
             }
 
