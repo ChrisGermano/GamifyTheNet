@@ -1,13 +1,8 @@
-<div style="width:100%; text-align: center;">
-  <h1>Gamify the Net</h1>
-  <img src="GtN_Icon.png" style="width:100px; height:100px;">
-</div>
-
+<h1>Gamify the Net</h1>
 Those who design the future are the ones who answer questions the average
 person would never think to ask. Today, the future is here:
 
 <h2>Why is the Internet so boring?</h2>
-
 While most of us are content looking at pictures of cats and food, the rest
 of us not only require richer content but a deeper experience altogether. It's
 taken too long, but thankfully we've discovered the salvation of the World
@@ -16,7 +11,6 @@ systems, social media, and even entertainment, gamification is the future.
 
 
 <h2>How do you gamify the Internet?</h2>
-
 It's deceptively simple, and the entire system is kept in a convenient little
 Chrome extension! When users first use the extension, they begin their journey
 towards better web surfing. Starting at the lowest rank, the user is able to
