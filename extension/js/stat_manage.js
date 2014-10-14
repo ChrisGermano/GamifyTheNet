@@ -21,6 +21,10 @@ chrome.runtime.onMessage.addListener(
         });
       });
     });
+    chrome.browserAction.setIcon({path: "../icons/Icon_MG.png"});
+    setTimeout(
+      chrome.browserAction.setIcon({path: "../icons/Icon_M.png"}),
+      1000);
   } else if (request.action == 'Nuke') {
     alert('Nuking...');
     chrome.storage.sync.clear(function() {
