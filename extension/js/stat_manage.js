@@ -2,20 +2,20 @@
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.action == 'Load') {
-      chrome.storage.local.get('data_init', function(result) {
+      chrome.storage.sync.get('data_init', function(result) {
         if (parseInt(result.data_init) != 1) {
-          chrome.storage.local.set({'xp': '0'}, function() {});
-          chrome.storage.local.set({'level': '1'}, function() {});
-          chrome.storage.local.set({'rank': '1'}, function() {});
-          chrome.storage.local.set({'title': 'Newbie'}, function() {});
-          chrome.storage.local.set({'data_init':'1'}, function() {});
+          chrome.storage.sync.set({'xp': '0'}, function() {});
+          chrome.storage.sync.set({'level': '1'}, function() {});
+          chrome.storage.sync.set({'rank': '1'}, function() {});
+          chrome.storage.sync.set({'title': 'Newbie'}, function() {});
+          chrome.storage.sync.set({'data_init':'1'}, function() {});
         }
     });
   } else if (request.action == 'GainXP') {
-    chrome.storage.local.get('xp', function(result) {
+    chrome.storage.sync.get('xp', function(result) {
       var cxp = parseInt(result.xp);
       cxp += parseInt(request.value);
-      chrome.storage.local.set({'xp': cxp}, function() {
+      chrome.storage.sync.set({'xp': cxp}, function() {
         chrome.runtime.sendMessage({
           action: 'CheckXP'
         });
@@ -23,7 +23,7 @@ chrome.runtime.onMessage.addListener(
     });
   } else if (request.action == 'Nuke') {
     alert('Nuking...');
-    chrome.storage.local.clear(function() {
+    chrome.storage.sync.clear(function() {
       chrome.sotrage.local.set({'data_init':'0'}, function() {});
     });
   } else if (request.action == 'CheckXP') {
@@ -34,13 +34,13 @@ chrome.runtime.onMessage.addListener(
       var rank;
       var title;
 
-      chrome.storage.local.get('xp', function(result) {
+      chrome.storage.sync.get('xp', function(result) {
         current_xp = parseInt(result.xp);
 
-        chrome.storage.local.get('level', function(result) {
+        chrome.storage.sync.get('level', function(result) {
           level = parseInt(result.level);
 
-          chrome.storage.local.get('rank', function(result) {
+          chrome.storage.sync.get('rank', function(result) {
             rank = parseInt(result.rank);
 
             max_xp = Math.pow(level+1,rank);
@@ -60,10 +60,10 @@ chrome.runtime.onMessage.addListener(
               UpdateTitle(level, rank);
             }
 
-            chrome.storage.local.set({'xp': current_xp}, function() {});
-            chrome.storage.local.set({'level': level}, function() {});
-            chrome.storage.local.set({'rank': rank}, function() {});
-            chrome.storage.local.set({'title': title}, function() {});
+            chrome.storage.sync.set({'xp': current_xp}, function() {});
+            chrome.storage.sync.set({'level': level}, function() {});
+            chrome.storage.sync.set({'rank': rank}, function() {});
+            chrome.storage.sync.set({'title': title}, function() {});
 
           });
 
@@ -118,5 +118,5 @@ function UpdateTitle(level, rank) {
       break;
   }
 
-  chrome.storage.local.set({'title': (levelT + ' ' + rankT)}, function() {});
+  chrome.storage.sync.set({'title': (levelT + ' ' + rankT)}, function() {});
 }

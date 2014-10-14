@@ -3,18 +3,18 @@
 $(document).ready(function() {
   var cxp,fxp;
 
-  chrome.storage.local.get('title', function(result) {
+  chrome.storage.sync.get('title', function(result) {
     $('.pt').text(result.title);
   });
-  chrome.storage.local.get('level', function(result) {
+  chrome.storage.sync.get('level', function(result) {
     var lvl = parseInt(result.level);
     $('.pl').text(result.level);
     setBadge(result.level);
-    chrome.storage.local.get('rank', function(result) {
+    chrome.storage.sync.get('rank', function(result) {
       var mxp = Math.pow(lvl+1, result.rank);
       fxp = parseInt(mxp);
       $('.mxp').text(mxp);
-      chrome.storage.local.get('xp', function(result) {
+      chrome.storage.sync.get('xp', function(result) {
         $('.cxp').text(result.xp);
         cxp = parseInt(result.xp);
         $('.xp_bar').attr('style', 'width: ' + 100*(parseFloat(cxp)/parseFloat(fxp)) + '%');
