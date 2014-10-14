@@ -1,5 +1,5 @@
 <h1>Gamify the Net</h1>
-<a href="chrisgermano.github.io/gamifythenet"><h3>Visit the official website</h3></a>
+<a href="chrisgermano.github.io/gamifythenet">Visit the official website</a>
 
 Those who design the future are the ones who answer questions the average
 person would never think to ask. Today, the future is here:
