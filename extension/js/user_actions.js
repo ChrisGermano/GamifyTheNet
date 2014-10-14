@@ -83,6 +83,46 @@ $(document).ready(function() {
     });
   });
 
+  //Twitch follow
+  $('.js-follow').click(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 10
+    });
+  });
+
+  //Twitch chat
+  $('.send-chat-button').click(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 4
+    });
+  });
+
+  //Twitch open stream
+  $('.cap').click(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 6
+    });
+  });
+
+  //Google feel lucky
+  $('.gbqfba').click(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 16
+    });
+  });
+
+  //Codecademy new user
+  $('.new_user').submit(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 20
+    });
+  });
+
   //Once the user moves the mouse, it initializes the game session if unitialized
   $('body').mousemove(function() {
     if (session_init == 0) {
