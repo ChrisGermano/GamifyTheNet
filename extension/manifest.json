@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Gamify the Internet",
   "version": "1.0.0",
-  "description": "Make the Internet fun again!",
+  "description": "Make the Internet fun again with a touch of gamification!",
   "icons": {
     "128": "icons/Icon_M.png",
     "48": "icons/Icon_S.png"

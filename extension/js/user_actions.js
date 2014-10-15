@@ -1,6 +1,7 @@
 //Content Script
 
 $(document).ready(function() {
+
   chrome.runtime.sendMessage({
     action: 'GainXP',
     value: 1
@@ -170,6 +171,14 @@ $(document).ready(function() {
       action: 'GainXP',
       value: 2
     });
+  });
+
+  //Wikipedia random page, current events, and donate
+  $('#n-randompage, #n-currentevents, #n-sitesupport').click(function() {
+    chrome.runtime.sendMessage({
+      action: 'GainXP',
+      value: 8
+    })
   });
 
   //Once the user moves the mouse, it initializes the game session if unitialized

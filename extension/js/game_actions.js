@@ -2,6 +2,7 @@
 
 $(document).ready(function() {
   var cxp,fxp;
+  var nuker = new Konami(function() { chrome.runtime.sendMessage({action: 'Nuke'}); });
 
   chrome.storage.sync.get('title', function(result) {
     $('.pt').text(result.title);

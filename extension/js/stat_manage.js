@@ -21,14 +21,11 @@ chrome.runtime.onMessage.addListener(
         });
       });
     });
-    chrome.browserAction.setIcon({path: "../icons/Icon_MG.png"});
-    setTimeout(
-      chrome.browserAction.setIcon({path: "../icons/Icon_M.png"}),
-      1000);
   } else if (request.action == 'Nuke') {
-    alert('Nuking...');
-    chrome.storage.sync.clear(function() {
-      chrome.sotrage.local.set({'data_init':'0'}, function() {});
+    chrome.storage.sync.set({'data_init': '0'}, function(result) {
+      chrome.runtime.sendMessage({
+        action: 'Load'
+      });
     });
   } else if (request.action == 'CheckXP') {
 
