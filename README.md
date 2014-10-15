@@ -26,3 +26,5 @@ time the functionality and performance will no doubt improve, so it's all
 uphill from here.
 
 <h2>Embrace the future! Gamify the future! Become the future!</h2>
+
+(To reset your stats, perform the Konami Code within the stats popup)
