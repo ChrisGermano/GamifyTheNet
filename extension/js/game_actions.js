@@ -23,9 +23,22 @@ $(document).ready(function() {
     });
   });
 
+  chrome.storage.sync.get('lurkNum', function(result) {
+    $('.lurks').text(result.lurkNum);
+  });
+  chrome.storage.sync.get('creNum', function(result) {
+    $('.creates').text(result.creNum);
+  });
+  chrome.storage.sync.get('knoNum', function(result) {
+    $('.knows').text(result.knoNum);
+  });
+  chrome.storage.sync.get('socNum', function(result) {
+    $('.socs').text(result.socNum);
+  });
+
 });
 
 function setBadge(level) {
   var iconL = parseInt(level)%6;
-  $('.icon_container img').attr('src', 'icons/ranks/Tier' + parseInt(level) + '.png');
+  $('.icon_container img').attr('src', 'img/ranks/Tier' + parseInt(level) + '.png');
 }

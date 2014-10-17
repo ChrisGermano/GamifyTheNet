@@ -4,6 +4,7 @@ $(document).ready(function() {
 
   chrome.runtime.sendMessage({
     action: 'GainXP',
+    actType: 'Lurk',
     value: 1
   });
 
@@ -23,6 +24,7 @@ $(document).ready(function() {
   $('.tweet-btn').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Create',
       value: 8
     });
   });
@@ -31,6 +33,7 @@ $(document).ready(function() {
   $('.follow-text').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Social',
       value: 4
     });
   });
@@ -39,6 +42,7 @@ $(document).ready(function() {
   $('#watch-like').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Lurk',
       value: 2
     });
   });
@@ -47,6 +51,7 @@ $(document).ready(function() {
   $('#watch-dislike').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Lurk',
       value: 1
     });
   });
@@ -55,6 +60,7 @@ $(document).ready(function() {
   $('.d-k-l').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Social',
       value: 6
     });
   });
@@ -64,6 +70,7 @@ $(document).ready(function() {
     if ($('.mentionsHidden').value().length > 0) {
       chrome.runtime.sendMessage({
         action: 'GainXP',
+        actType: 'Social',
         value: 14
       });
     }
@@ -73,6 +80,7 @@ $(document).ready(function() {
   $('.create_post_button').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Create',
       value: 20
     });
   });
@@ -81,6 +89,7 @@ $(document).ready(function() {
   $('.repinSmall').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Lurk',
       value: 5
     });
   });
@@ -89,6 +98,7 @@ $(document).ready(function() {
   $('.js-follow').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Social',
       value: 10
     });
   });
@@ -97,6 +107,7 @@ $(document).ready(function() {
   $('.send-chat-button').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Social',
       value: 4
     });
   });
@@ -105,6 +116,7 @@ $(document).ready(function() {
   $('.cap').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Lurk',
       value: 6
     });
   });
@@ -113,6 +125,7 @@ $(document).ready(function() {
   $('.gbqfba').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Lurk',
       value: 16
     });
   });
@@ -121,6 +134,7 @@ $(document).ready(function() {
   $('.new_user').submit(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Know',
       value: 20
     });
   });
@@ -129,6 +143,7 @@ $(document).ready(function() {
   $('.rating-control a').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Lurk',
       value: 5
     });
   });
@@ -137,6 +152,7 @@ $(document).ready(function() {
   $('.story-title a').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Know',
       value: 6
     });
   });
@@ -145,6 +161,7 @@ $(document).ready(function() {
   $('#mc-embedded-subscribe').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Social',
       value: 18
     });
   });
@@ -153,14 +170,16 @@ $(document).ready(function() {
   $('#follow-button').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Social',
       value: 12
     });
   });
 
-  //Grapplehook aboue
+  //Grapplehook about
   $('.last a').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Lurk',
       value: 4
     });
   });
@@ -169,6 +188,7 @@ $(document).ready(function() {
   $('.folder, .folder-parent').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Lurk',
       value: 2
     });
   });
@@ -177,6 +197,7 @@ $(document).ready(function() {
   $('#n-randompage, #n-currentevents, #n-sitesupport').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
+      actType: 'Know',
       value: 8
     })
   });

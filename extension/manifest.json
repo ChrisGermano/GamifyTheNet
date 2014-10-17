@@ -1,14 +1,14 @@
 {
   "manifest_version": 2,
-  "name": "Gamify the Internet",
-  "version": "1.0.0",
+  "name": "Gamify the Net",
+  "version": "1.0.2",
   "description": "Make the Internet fun again with a touch of gamification!",
   "icons": {
-    "128": "icons/Icon_M.png",
-    "48": "icons/Icon_S.png"
+    "128": "img/Icon_M.png",
+    "48": "img/Icon_S.png"
   },
   "browser_action": {
-    "default_icon": "icons/Icon_M.png",
+    "default_icon": "img/Icon_M.png",
     "default_popup": "popup.html"
   },
   "content_scripts": [
