@@ -24,6 +24,7 @@ body {
 }
 
 .jumbotron {
+  margin-bottom: 0px;
   background: #2d3655;
   background: -moz-linear-gradient(top,  #2d3655 0%, #616985 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2d3655), color-stop(100%,#616985));
@@ -43,6 +44,11 @@ body {
 .jumbo-icon img {
   height: 210px;
   width: 210px;
+}
+
+.btn-primary {
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
 }
 
 .supp-icons li {
