@@ -24,7 +24,14 @@ body {
 }
 
 .jumbotron {
-  background-color: #2d3655;
+  background: #2d3655;
+  background: -moz-linear-gradient(top,  #2d3655 0%, #616985 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2d3655), color-stop(100%,#616985));
+  background: -webkit-linear-gradient(top,  #2d3655 0%,#616985 100%);
+  background: -o-linear-gradient(top,  #2d3655 0%,#616985 100%);
+  background: -ms-linear-gradient(top,  #2d3655 0%,#616985 100%);
+  background: linear-gradient(to bottom,  #2d3655 0%,#616985 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2d3655', endColorstr='#616985',GradientType=0 );
 }
 
 .jumbo-icon {
