@@ -6,7 +6,14 @@ body {
 .stat_container {
   width: 300px;
   height: 100px;
+  background-color: #eaeaea;
   background-image: url('../popup_bg.png');
+  background-repeat: no-repeat;
+}
+
+.skill_container {
+  width: 300px;
+  height: 200px;
 }
 
 .icon_container {
@@ -36,12 +43,12 @@ body {
 .pt {
   width: 100%;
   text-align: center;
-  padding-top: 4px;
+  padding-top: 12px;
 }
 
 .xp_container {
   width: 200px;
-  height: 40px;
+  height: 35px;
 }
 
 .xp_bar_full {
@@ -68,14 +75,7 @@ body {
   margin: auto;
 }
 
-.player_level {
-  float: left;
-  padding-top: 5px;
-  padding-left: 10px;
-}
-
 .player_xp {
-  float: right;
-  padding-top: 5px;
-  padding-right: 10px;
+  text-align: center;
+  font-size: 15px;
 }
