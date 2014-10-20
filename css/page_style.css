@@ -1,0 +1,211 @@
+body {
+  margin: 0;
+  font-family: 'Roboto Slab', serif;
+}
+
+.top-section {
+  width: 100%;
+  height: 800px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  display:block;
+}
+
+.top-section-bg {
+  width: 100%;
+  height: 800px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background: url('../img/top_bg.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-filter: blur(10px);
+  z-index: 0;
+}
+
+.top-section .blurb-container {
+  width: 700px;
+  height: 250px;
+  padding-top: 300px;
+  margin: auto;
+}
+
+.top-section h1 {
+  font-size: 90px;
+  color: #111;
+  text-align: center;
+  margin: 0;
+}
+
+.top-section h2 {
+  font-size: 24px;
+  font-style: bold;
+  color: #222;
+  text-align: center;
+  margin: 20px 0px;
+}
+
+.blurb-container a {
+  margin: 10px auto;
+  display: block;
+}
+
+.button-container .install {
+  width: 175px;
+  height: 50px;
+}
+
+.button-container .source {
+  width: 150px;
+  height: 35px;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.button-container a {
+  color: #222;
+}
+
+.info-sections {
+  z-index: 2;
+  background: #ccc;
+  width: 100%;
+  height: 2400px;
+  position: absolute;
+  top: 780px;
+}
+
+.info-sections>div {
+  width: 100%;
+  height: 600px;
+}
+
+.info-one {
+  background-color: #ddd;
+}
+
+.info-one-image {
+  background: url('../img/game.png');
+  display: block;
+  width: 640px;
+  height: 301px;
+  margin-top: 100px;
+  margin-left: 115px;
+  padding: 0px;
+  float: left;
+}
+
+.info-one-quote,
+.info-two-quote {
+  margin: 170px 0px 0px 100px;
+  display: block;
+  float: left;
+}
+
+.info-two-quote {
+  float: left;
+  text-align: right;
+  color: #ddd;
+  width: 67%;
+}
+
+.info-one-quote h2,
+.info-two-quote h2,
+.info-three-quote h2 {
+  font-size: 54px;
+}
+
+.info-one-quote h3,
+.info-two-quote h3,
+.info-three-quote h3 {
+  font-size: 34px;
+}
+
+.info-one-quote p,
+.info-two-quote p,
+.info-three-quote p {
+  font-size: 20px;
+}
+
+.info-two {
+  background-color: #162633;
+  background: url('../img/info_two.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+.info-three {
+  background-color: #ddd;
+  text-align: center;
+}
+
+.info-three-quote {
+  padding-top: 150px;
+}
+
+.info-four {
+  background-color: #ccc;
+}
+
+.info-four .title-container {
+  padding-top: 110px;
+  margin: 0px auto;
+  text-align: center;
+}
+
+.info-four h2, .info-four h3 {
+  margin: 0 auto;
+}
+
+.info-four h2 {
+  font-size: 38px;
+}
+
+.info-four h3 {
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+.supp-icons {
+  width: 45%;
+  margin: 20px auto;
+  list-style-type: none;
+}
+
+.supp-icons li {
+  display: inline;
+  width: 64px;
+  height: 64px;
+}
+
+.footer {
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+
+.footer-logo {
+  margin: 60px auto;
+  width: 250px;
+  height: 240px;
+  background: url('../img/icons/Icon_L.png');
+  background-repeat: no-repeat;
+}
+
+.small-screen-footer {
+  position: absolute;
+  bottom: 0px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
