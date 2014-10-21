@@ -1,37 +1,34 @@
 //Background script
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-
-    chrome.storage.sync.set({'lurkNum': request.actType}, function() {});
-
     if (request.action == 'Load') {
-      chrome.storage.sync.get('data_init', function(result) {
+      chrome.storage.local.get('data_init', function(result) {
         if (parseInt(result.data_init) != 1) {
-          chrome.storage.sync.set({'xp': '0'}, function() {});
-          chrome.storage.sync.set({'level': '1'}, function() {});
-          chrome.storage.sync.set({'rank': '1'}, function() {});
-          chrome.storage.sync.set({'title': 'Newbie'}, function() {});
-          chrome.storage.sync.set({'totalActs': '0'}, function() {});
-          chrome.storage.sync.set({'lurkNum': '0'}, function() {});
-          chrome.storage.sync.set({'socNum': '0'}, function() {});
-          chrome.storage.sync.set({'knoNum': '0'}, function() {});
-          chrome.storage.sync.set({'creNum': '0'}, function() {});
-          chrome.storage.sync.set({'data_init':'1'}, function() {});
+          chrome.storage.local.set({'xp': '0'}, function() {});
+          chrome.storage.local.set({'level': '1'}, function() {});
+          chrome.storage.local.set({'rank': '1'}, function() {});
+          chrome.storage.local.set({'title': 'Newbie'}, function() {});
+          chrome.storage.local.set({'totalActs': '0'}, function() {});
+          chrome.storage.local.set({'lurkNum': '0'}, function() {});
+          chrome.storage.local.set({'socNum': '0'}, function() {});
+          chrome.storage.local.set({'knoNum': '0'}, function() {});
+          chrome.storage.local.set({'creNum': '0'}, function() {});
+          chrome.storage.local.set({'data_init':'1'}, function() {});
         }
     });
   } else if (request.action == 'GainXP') {
-    chrome.storage.sync.get('xp', function(result) {
-      //addActType(request.type);
+    chrome.storage.local.get('xp', function(result) {
+      addtype(String(request.type));
       var cxp = parseInt(result.xp);
       cxp += parseInt(request.value);
-      chrome.storage.sync.set({'xp': cxp}, function() {
+      chrome.storage.local.set({'xp': cxp}, function() {
         chrome.runtime.sendMessage({
           action: 'CheckXP'
         });
       });
     });
-  } else if (request.action == 'Nuke'0) {
-    chrome.storage.sync.set({'data_init': '0'}, function(result) {
+  } else if (request.action == 'Nuke') {
+    chrome.storage.local.set({'data_init': '0'}, function(result) {
       chrome.runtime.sendMessage({
         action: 'Load'
       });
@@ -44,13 +41,13 @@ chrome.runtime.onMessage.addListener(
       var rank;
       var title;
 
-      chrome.storage.sync.get('xp', function(result) {
+      chrome.storage.local.get('xp', function(result) {
         current_xp = parseInt(result.xp);
 
-        chrome.storage.sync.get('level', function(result) {
+        chrome.storage.local.get('level', function(result) {
           level = parseInt(result.level);
 
-          chrome.storage.sync.get('rank', function(result) {
+          chrome.storage.local.get('rank', function(result) {
             rank = parseInt(result.rank);
 
             max_xp = Math.pow(level+1,rank);
@@ -70,10 +67,10 @@ chrome.runtime.onMessage.addListener(
               UpdateTitle(level, rank);
             }
 
-            chrome.storage.sync.set({'xp': current_xp}, function() {});
-            chrome.storage.sync.set({'level': level}, function() {});
-            chrome.storage.sync.set({'rank': rank}, function() {});
-            chrome.storage.sync.set({'title': title}, function() {});
+            chrome.storage.local.set({'xp': current_xp}, function() {});
+            chrome.storage.local.set({'level': level}, function() {});
+            chrome.storage.local.set({'rank': rank}, function() {});
+            chrome.storage.local.set({'title': title}, function() {});
 
           });
 
@@ -83,32 +80,32 @@ chrome.runtime.onMessage.addListener(
   }
 );
 
-function addActType(actType) {
-  if (typeof actType === undefined) {
+function addtype(type) {
+  if (typeof type === undefined) {
     return;
   } else {
     if (type == "Lurk") {
-      chrome.storage.sync.get('lurkNum', function(result) {
+      chrome.storage.local.get('lurkNum', function(result) {
         var newLurks = parseInt(result.lurkNum) + 1;
-        chrome.storage.sync.set({'lurkNum': newLurks}, function() {});
+        chrome.storage.local.set({'lurkNum': newLurks}, function() {});
         return;
       });
     } else if (type == "Create") {
-      chrome.storage.sync.get('creNum', function(result) {
-        var newLurks = parseInt(result.lurkNum) + 1;
-        chrome.storage.sync.set({'creNum': newLurks}, function() {});
+      chrome.storage.local.get('creNum', function(result) {
+        var newLurks = parseInt(result.creNum) + 6;
+        chrome.storage.local.set({'creNum': newLurks}, function() {});
         return;
       });
     } else if (type == "Know") {
-      chrome.storage.sync.get('knoNum', function(result) {
-        var newLurks = parseInt(result.lurkNum) + 1;
-        chrome.storage.sync.set({'knoNum': newLurks}, function() {});
+      chrome.storage.local.get('knoNum', function(result) {
+        var newLurks = parseInt(result.knoNum) + 4;
+        chrome.storage.local.set({'knoNum': newLurks}, function() {});
         return;
       });
     } else if (type == "Social") {
-      chrome.storage.sync.get('socNum', function(result) {
-        var newLurks = parseInt(result.lurkNum) + 1;
-        chrome.storage.sync.set({'socNum': newLurks}, function() {});
+      chrome.storage.local.get('socNum', function(result) {
+        var newLurks = parseInt(result.socNum) + 2;
+        chrome.storage.local.set({'socNum': newLurks}, function() {});
         return;
       });
     }
@@ -161,5 +158,5 @@ function UpdateTitle(level, rank) {
       break;
   }
 
-  chrome.storage.sync.set({'title': (levelT + ' ' + rankT)}, function() {});
+  chrome.storage.local.set({'title': (levelT + ' ' + rankT)}, function() {});
 }
