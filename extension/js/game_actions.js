@@ -4,18 +4,18 @@ $(document).ready(function() {
   var cxp,fxp;
   var nuker = new Konami(function() { chrome.runtime.sendMessage({action: 'Nuke'}); });
 
-  chrome.storage.local.get('title', function(result) {
+  chrome.storage.sync.get('title', function(result) {
     $('.pt').text(result.title);
   });
-  chrome.storage.local.get('level', function(result) {
+  chrome.storage.sync.get('level', function(result) {
     var lvl = parseInt(result.level);
     $('.pl').text(result.level);
     setBadge(result.level);
-    chrome.storage.local.get('rank', function(result) {
+    chrome.storage.sync.get('rank', function(result) {
       var mxp = Math.pow(lvl+1, result.rank);
       fxp = parseInt(mxp);
       $('.mxp').text(mxp);
-      chrome.storage.local.get('xp', function(result) {
+      chrome.storage.sync.get('xp', function(result) {
         $('.cxp').text(result.xp);
         cxp = parseInt(result.xp);
         $('.xp_bar').attr('style', 'width: ' + 100*(parseFloat(cxp)/parseFloat(fxp)) + '%');
@@ -29,15 +29,15 @@ $(document).ready(function() {
   var knows;
   var socs;
 
-  chrome.storage.local.get('lurkNum', function(result) {
+  chrome.storage.sync.get('lurkNum', function(result) {
     lurks = parseFloat(result.lurkNum);
-    chrome.storage.local.get('creNum', function(result) {
+    chrome.storage.sync.get('creNum', function(result) {
       cres = parseFloat(result.creNum);
-      chrome.storage.local.get('knoNum', function(result) {
+      chrome.storage.sync.get('knoNum', function(result) {
         knows = parseFloat(result.knoNum);
-        chrome.storage.local.get('socNum', function(result) {
+        chrome.storage.sync.get('socNum', function(result) {
           socs = parseFloat(result.socNum);
-          chrome.storage.local.get('totalActs', function(result) {
+          chrome.storage.sync.get('totalActs', function(result) {
             totalActVal = parseFloat(result.totalActs);
             $('.lurkbar').width((lurks/totalActVal) * $('.lurkbar-bg').width());
             $('.crebar').width((cres/totalActVal) * $('.crebar-bg').width());

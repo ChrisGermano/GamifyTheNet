@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Gamify the Net",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Revolutionize your online experience, with gamification.",
   "icons": {
     "128": "img/Icon_M.png",
