@@ -1,7 +1,6 @@
 //Background script
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    alert(request.type);
     if (request.action == 'Load') {
       chrome.storage.local.get('data_init', function(result) {
         if (parseInt(result.data_init) != 1) {
