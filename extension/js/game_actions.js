@@ -30,24 +30,24 @@ $(document).ready(function() {
   var socs;
 
   chrome.storage.local.get('lurkNum', function(result) {
-    lurks = result.lurkNum;
+    lurks = parseFloat(result.lurkNum);
     chrome.storage.local.get('creNum', function(result) {
-      cres = result.creNum;
+      cres = parseFloat(result.creNum);
       chrome.storage.local.get('knoNum', function(result) {
-        knows = result.knoNum;
+        knows = parseFloat(result.knoNum);
         chrome.storage.local.get('socNum', function(result) {
-          socs = result.socNum;
-          totalActVal = lurks + cres + knows + socs;
-          $('.lurkbar').width((parseFloat(lurks)/parseFloat(totalActVal)) * $('.lurkbar-bg').width() * 100);
-          $('.crebar').width((parseFloat(cres)/parseFloat(totalActVal)) * $('.crebar-bg').width() * 100);
-          $('.knobar').width((parseFloat(knows)/parseFloat(totalActVal)) * $('.knobar-bg').width() * 100);
-          $('.socbar').width((parseFloat(socs)/parseFloat(totalActVal)) * $('.socbar-bg').width() * 100);
+          socs = parseFloat(result.socNum);
+          chrome.storage.local.get('totalActs', function(result) {
+            totalActVal = parseFloat(result.totalActs);
+            $('.lurkbar').width((lurks/totalActVal) * $('.lurkbar-bg').width());
+            $('.crebar').width((cres/totalActVal) * $('.crebar-bg').width());
+            $('.knobar').width((knows/totalActVal) * $('.knobar-bg').width());
+            $('.socbar').width((socs/totalActVal) * $('.socbar-bg').width());
+          });
         });
       });
     });
   });
-
-
 
 });
 

@@ -10,15 +10,6 @@ $(document).ready(function() {
       value: 1
   });
 
-  //Esc nukes stored data
-  $(document).keyup(function(e) {
-    if (e.keyCode == 27) {
-      chrome.runtime.sendMessage({
-        action: 'Nuke'
-      });
-    }
-  });
-
   //Tweet
   $('.tweet-btn').click(function() {
     chrome.runtime.sendMessage({
@@ -29,7 +20,7 @@ $(document).ready(function() {
   });
 
   //Twitter follow
-  $('.follow-text').click(function() {
+  $('.follow-btn, .follow-button').click(function() {
     chrome.runtime.sendMessage({
       action: 'GainXP',
       type: 'Social',

@@ -1,6 +1,7 @@
 //Background script
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
+    alert(request.type);
     if (request.action == 'Load') {
       chrome.storage.local.get('data_init', function(result) {
         if (parseInt(result.data_init) != 1) {
@@ -81,31 +82,48 @@ chrome.runtime.onMessage.addListener(
 );
 
 function addtype(type) {
+
   if (typeof type === undefined) {
     return;
   } else {
     if (type == "Lurk") {
       chrome.storage.local.get('lurkNum', function(result) {
         var newLurks = parseInt(result.lurkNum) + 1;
-        chrome.storage.local.set({'lurkNum': newLurks}, function() {});
+        chrome.storage.local.set({'lurkNum': newLurks}, function() {
+          chrome.storage.local.get('totalActs', function(result) {
+            chrome.storage.local.set({'totalActs': (parseInt(result.totalActs) + 1)}, function() {});
+          });
+        });
         return;
       });
     } else if (type == "Create") {
       chrome.storage.local.get('creNum', function(result) {
-        var newLurks = parseInt(result.creNum) + 6;
-        chrome.storage.local.set({'creNum': newLurks}, function() {});
+        var newCres = parseInt(result.creNum) + 6;
+        chrome.storage.local.set({'creNum': newCres}, function() {
+          chrome.storage.local.get('totalActs', function(result) {
+            chrome.storage.local.set({'totalActs': (parseInt(result.totalActs) + 6)}, function() {});
+          });
+        });
         return;
       });
     } else if (type == "Know") {
       chrome.storage.local.get('knoNum', function(result) {
-        var newLurks = parseInt(result.knoNum) + 4;
-        chrome.storage.local.set({'knoNum': newLurks}, function() {});
+        var newKnos = parseInt(result.knoNum) + 4;
+        chrome.storage.local.set({'knoNum': newKnos}, function() {
+          chrome.storage.local.get('totalActs', function(result) {
+            chrome.storage.local.set({'totalActs': (parseInt(result.totalActs) + 4)}, function() {});
+          });
+        });
         return;
       });
     } else if (type == "Social") {
       chrome.storage.local.get('socNum', function(result) {
-        var newLurks = parseInt(result.socNum) + 2;
-        chrome.storage.local.set({'socNum': newLurks}, function() {});
+        var newSocs = parseInt(result.socNum) + 2;
+        chrome.storage.local.set({'socNum': newSocs}, function() {
+          chrome.storage.local.get('totalActs', function(result) {
+            chrome.storage.local.set({'totalActs': (parseInt(result.totalActs) + 2)}, function() {});
+          });
+        });
         return;
       });
     }
