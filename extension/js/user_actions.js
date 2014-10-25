@@ -41,6 +41,14 @@ $(document).ready(function() {
         value: 4
       });
     });
+    //Twitter load new tweets
+    $('.js-new-items-bar-container').click(function() {
+      chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Social',
+        value: 2
+      });
+    });
   };
 
   sites['youtube'] = function() {
