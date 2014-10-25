@@ -58,8 +58,8 @@ chrome.runtime.onMessage.addListener(
                 level = level + 1;
                 rank = 1;
               }
-              if (level>5) {
-                level = 5;
+              if (level>6) {
+                level = 6;
               }
 
               current_xp = current_xp - max_xp;
@@ -148,6 +148,9 @@ function UpdateTitle(level, rank) {
       break;
     case 5:
       levelT = 'Supreme Creator';
+      break;
+    case 6:
+      levelT = 'Webmaster';
       break;
     default:
       levelT = 'Extension Hacker';

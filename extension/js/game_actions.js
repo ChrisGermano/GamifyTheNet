@@ -52,7 +52,7 @@ $(document).ready(function() {
 });
 
 function setBadge(level) {
-  var iconL = parseInt(level)%6;
+  var iconL = parseInt(level)%7;
   if (String(iconL) == 'NaN') {
     iconL = 0;
   }
