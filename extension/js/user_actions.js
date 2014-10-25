@@ -16,15 +16,14 @@ $(document).ready(function() {
     action: 'Load',
   });
 
-  chrome.runtime.sendMessage({
-      action: 'GainXP',
-      type: 'Lurk',
-      value: 1
-  });
-
   var sites = [];
 
   sites['twitter'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Social',
+        value: 1
+    });
     //Tweet
     $('.tweet-button .primary-btn').click(function() {
       chrome.runtime.sendMessage({
@@ -52,6 +51,11 @@ $(document).ready(function() {
   };
 
   sites['youtube'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Lurk',
+        value: 1
+    });
     //Youtube like
     $('#watch-like').click(function() {
       chrome.runtime.sendMessage({
@@ -79,6 +83,11 @@ $(document).ready(function() {
   };
 
   sites['facebook'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Social',
+        value: 1
+    });
     //Facebook status
     $('._42ft').click(function() {
       if ($('.mentionsHidden').value().length > 0) {
@@ -92,6 +101,11 @@ $(document).ready(function() {
   };
 
   sites['tumblr'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Lurk',
+        value: 1
+    });
     //Tumblr post
     $('.create_post_button').click(function() {
       chrome.runtime.sendMessage({
@@ -103,6 +117,11 @@ $(document).ready(function() {
   };
 
   sites['pinterest'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Lurk',
+        value: 1
+    });
     //Pinterest repin
     $('.repinSmall').click(function() {
       chrome.runtime.sendMessage({
@@ -114,6 +133,11 @@ $(document).ready(function() {
   };
 
   sites['twitch'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Social',
+        value: 1
+    });
     //Twitch follow
     $('.js-follow').click(function() {
       chrome.runtime.sendMessage({
@@ -141,6 +165,11 @@ $(document).ready(function() {
   };
 
   sites['google'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Know',
+        value: 1
+    });
     //Google feel lucky
     $('.gbqfba').click(function() {
       chrome.runtime.sendMessage({
@@ -152,6 +181,11 @@ $(document).ready(function() {
   };
 
   sites['codecademy'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Know',
+        value: 1
+    });
     //Codecademy new user
     $('.new_user').submit(function() {
       chrome.runtime.sendMessage({
@@ -163,6 +197,11 @@ $(document).ready(function() {
   };
 
   sites['gamejolt'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Lurk',
+        value: 1
+    });
     //Gamejolt rate game
     $('.rating-control a').click(function() {
       chrome.runtime.sendMessage({
@@ -174,6 +213,11 @@ $(document).ready(function() {
   };
 
   sites['gamasutra'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Know',
+        value: 1
+    });
     //Gamasutra article
     $('.story-title a').click(function() {
       chrome.runtime.sendMessage({
@@ -185,6 +229,11 @@ $(document).ready(function() {
   };
 
   sites['glassknuckle'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Lurk',
+        value: 1
+    });
     //Glassknuckle subscribe
     $('#mc-embedded-subscribe').click(function() {
       chrome.runtime.sendMessage({
@@ -196,6 +245,11 @@ $(document).ready(function() {
   };
 
   sites['grapplehookgames'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Lurk',
+        value: 1
+    });
     //Grapplehook subscribe
     $('#follow-button').click(function() {
       chrome.runtime.sendMessage({
@@ -215,6 +269,11 @@ $(document).ready(function() {
   };
 
   sites['chris-germano'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Lurk',
+        value: 1
+    });
     //Squarespace headers
     $('.folder, .folder-parent').click(function() {
       chrome.runtime.sendMessage({
@@ -226,6 +285,11 @@ $(document).ready(function() {
   };
 
   sites['wikipedia'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Know',
+        value: 1
+    });
     //Wikipedia random page, current events, and donate
     $('#n-randompage, #n-currentevents, #n-sitesupport').click(function() {
       chrome.runtime.sendMessage({
@@ -245,6 +309,11 @@ $(document).ready(function() {
   };
 
   sites['4chan'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Social',
+        value: 1
+    });
     //New thread or post
     $('.yotsuba_new form').submit(function() {
       chrome.runtime.sendMessage({
@@ -256,6 +325,11 @@ $(document).ready(function() {
   };
 
   sites['kickstarter'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Lurk',
+        value: 1
+    });
     //Browse category
     $('.bg-white').click(function() {
       chrome.runtime.sendMessage({
@@ -268,6 +342,12 @@ $(document).ready(function() {
 
   if (sites.indexOf(dom) >= 0) {
     sites[dom]();
+  } else {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Lurk',
+        value: 1
+    });
   }
 
 });
