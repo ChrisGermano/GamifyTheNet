@@ -2,8 +2,19 @@
 
 $(document).ready(function() {
 
-  var session_init = 0;
-  var curr_url = window.location.href;
+  var docDomain = document.domain.split('.');
+  var domain;
+
+  if (typeof(docDomain.length -2) != 'undefined') {
+    domain = docDomain[docDomain.length -2] + '.';
+  }
+
+  var dom = domain + docDomain[docDomain.length -1];
+  dom = dom.substring(0, dom.indexOf('.'));
+
+  chrome.runtime.sendMessage({
+    action: 'Load',
+  });
 
   chrome.runtime.sendMessage({
       action: 'GainXP',
@@ -11,9 +22,11 @@ $(document).ready(function() {
       value: 1
   });
 
-  if (curr_url.indexOf('twitter') > -1) {
+  var sites = [];
+
+  sites['twitter'] = function() {
     //Tweet
-    $('.tweet-btn').click(function() {
+    $('.tweet-button .primary-btn').click(function() {
       chrome.runtime.sendMessage({
         action: 'GainXP',
         type: 'Create',
@@ -28,7 +41,9 @@ $(document).ready(function() {
         value: 4
       });
     });
-  } else if (curr_url.indexOf('youtube') > -1) {
+  };
+
+  sites['youtube'] = function() {
     //Youtube like
     $('#watch-like').click(function() {
       chrome.runtime.sendMessage({
@@ -53,7 +68,9 @@ $(document).ready(function() {
         value: 6
       });
     });
-  } else if (curr_url.indexOf('facebook') > -1) {
+  };
+
+  sites['facebook'] = function() {
     //Facebook status
     $('._42ft').click(function() {
       if ($('.mentionsHidden').value().length > 0) {
@@ -64,7 +81,9 @@ $(document).ready(function() {
         });
       }
     });
-  } else if (curr_url.indexOf('tumblr') > -1) {
+  };
+
+  sites['tumblr'] = function() {
     //Tumblr post
     $('.create_post_button').click(function() {
       chrome.runtime.sendMessage({
@@ -73,7 +92,9 @@ $(document).ready(function() {
         value: 20
       });
     });
-  } else if (curr_url.indexOf('pinterest') > -1) {
+  };
+
+  sites['pinterest'] = function() {
     //Pinterest repin
     $('.repinSmall').click(function() {
       chrome.runtime.sendMessage({
@@ -82,7 +103,9 @@ $(document).ready(function() {
         value: 5
       });
     });
-  } else if (curr_url.indexOf('twitch') > -1) {
+  };
+
+  sites['twitch'] = function() {
     //Twitch follow
     $('.js-follow').click(function() {
       chrome.runtime.sendMessage({
@@ -107,7 +130,9 @@ $(document).ready(function() {
         value: 6
       });
     });
-  } else if (curr_url.indexOf('google') > -1) {
+  };
+
+  sites['google'] = function() {
     //Google feel lucky
     $('.gbqfba').click(function() {
       chrome.runtime.sendMessage({
@@ -116,7 +141,9 @@ $(document).ready(function() {
         value: 16
       });
     });
-  } else if (curr_url.indexOf('codecademy') > -1) {
+  };
+
+  sites['codecademy'] = function() {
     //Codecademy new user
     $('.new_user').submit(function() {
       chrome.runtime.sendMessage({
@@ -125,7 +152,9 @@ $(document).ready(function() {
         value: 20
       });
     });
-  } else if (curr_url.indexOf('gamejolt') > -1) {
+  };
+
+  sites['gamejolt'] = function() {
     //Gamejolt rate game
     $('.rating-control a').click(function() {
       chrome.runtime.sendMessage({
@@ -134,7 +163,9 @@ $(document).ready(function() {
         value: 5
       });
     });
-  } else if (curr_url.indexOf('gamasutra') > -1) {
+  };
+
+  sites['gamasutra'] = function() {
     //Gamasutra article
     $('.story-title a').click(function() {
       chrome.runtime.sendMessage({
@@ -143,16 +174,20 @@ $(document).ready(function() {
         value: 6
       });
     });
-  } else if (curr_url.indexOf('glassknuckle') > -1) {
+  };
+
+  sites['glassknuckle'] = function() {
     //Glassknuckle subscribe
     $('#mc-embedded-subscribe').click(function() {
       chrome.runtime.sendMessage({
         action: 'GainXP',
         type: 'Social',
-        value: 18
+        value: 12
       });
     });
-  } else if (curr_url.indexOf('grapplehook') > -1) {
+  };
+
+  sites['grapplehookgames'] = function() {
     //Grapplehook subscribe
     $('#follow-button').click(function() {
       chrome.runtime.sendMessage({
@@ -169,7 +204,9 @@ $(document).ready(function() {
         value: 4
       });
     });
-  } else if (curr_url.indexOf('germano') > -1) {
+  };
+
+  sites['chris-germano'] = function() {
     //Squarespace headers
     $('.folder, .folder-parent').click(function() {
       chrome.runtime.sendMessage({
@@ -178,7 +215,9 @@ $(document).ready(function() {
         value: 2
       });
     });
-  } else if (curr_url.indexOf('wikipedia') > -1) {
+  };
+
+  sites['wikipedia'] = function() {
     //Wikipedia random page, current events, and donate
     $('#n-randompage, #n-currentevents, #n-sitesupport').click(function() {
       chrome.runtime.sendMessage({
@@ -195,17 +234,32 @@ $(document).ready(function() {
         value: 6
       });
     });
-  }
+  };
 
-
-  //Once the user moves the mouse, it initializes the game session if unitialized
-  $('body').mousemove(function() {
-    if (session_init != 1) {
-      session_init = 1;
+  sites['4chan'] = function() {
+    //New thread or post
+    $('.yotsuba_new form').submit(function() {
       chrome.runtime.sendMessage({
-        action: 'Load'
+        action: 'GainXP',
+        type: 'Create',
+        value: '6'
       });
-    }
-  });
+    });
+  };
+
+  sites['kickstarter'] = function() {
+    //Browse category
+    $('.bg-white').click(function() {
+      chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Lurk',
+        value: '4'
+      });
+    });
+  };
+
+  if (sites.indexOf(dom) >= 0) {
+    sites[dom]();
+  }
 
 });

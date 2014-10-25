@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["js/jquery.min.js", "js/user_actions_min.js"],
+      "js": ["js/jquery.min.js", "js/user_actions.js"],
       "run_at": "document_end"
     }
   ],

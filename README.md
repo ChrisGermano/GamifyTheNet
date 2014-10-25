@@ -1,4 +1,12 @@
 <h1>Gamify the Net</h1>
+
+<h2>Changelog</h2>
+<h3>1.1.2 - Substantial code improvements</h3>
+<h3>1.1.1 - Categorized user statistics</h3>
+<h3>1.0.1 - Additional site support, assorted code improvements</h3>
+<h3>1.0.0 - Initial build, xp bar, levels, multiple site support</h3>
+
+
 Those who design the future are the ones who answer questions the average
 person would never think to ask. Today, the future is here:
 
