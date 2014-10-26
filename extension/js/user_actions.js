@@ -340,7 +340,7 @@ $(document).ready(function() {
     });
   };
 
-  if (sites.indexOf(dom) >= 0) {
+  if (typeof sites[dom] == 'function') {
     sites[dom]();
   } else {
     chrome.runtime.sendMessage({
