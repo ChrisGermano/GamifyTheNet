@@ -1,6 +1,7 @@
 <h1>Gamify the Net</h1>
 
 <h2>Changelog</h2>
+<h3>1.1.3 - Additional site support</h3>
 <h3>1.1.2 - Code improvements, additional site support, new xp system</h3>
 <h3>1.1.1 - Categorized user statistics</h3>
 <h3>1.0.1 - Additional site support, assorted code improvements</h3>
