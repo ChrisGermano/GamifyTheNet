@@ -167,7 +167,7 @@ $(document).ready(function() {
   sites['google'] = function() {
     chrome.runtime.sendMessage({
         action: 'GainXP',
-        type: 'Know',
+        type: 'Lurk',
         value: 1
     });
     //Google feel lucky
@@ -336,6 +336,62 @@ $(document).ready(function() {
         action: 'GainXP',
         type: 'Lurk',
         value: '4'
+      });
+    });
+  };
+
+  sites['github'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Know',
+        value: 1
+    });
+    //Star
+    $('.star-button').click(function() {
+      chrome.runtime.sendMessage({
+          action: 'GainXP',
+          type: 'Lurk',
+          value: 4
+      });
+    });
+    //Clone or download
+    $('.sidebar-button').click(function() {
+      chrome.runtime.sendMessage({
+          action: 'GainXP',
+          type: 'Know',
+          value: 20
+      });
+    });
+  };
+
+  sites['indiegamemag'] = function() {
+    chrome.runtime.sendMessage({
+        action: 'GainXP',
+        type: 'Lurk',
+        value: 1
+    });
+    //Search
+    $('.form-search').submit(function() {
+      chrome.runtime.sendMessage({
+          action: 'GainXP',
+          type: 'Lurk',
+          value: 4
+      });
+    });
+    //Menu options
+    $('.menu-main-1 a').click(function() {
+      chrome.runtime.sendMessage({
+          action: 'GainXP',
+          type: 'Lurk',
+          value: 2
+      });
+    });
+    //Comment
+    $('.logged-in .btn').click(function() {
+      chrome.runtime.sendMessage({
+          action: 'GainXP',
+          type: 'Social',
+          value: 8
       });
     });
   };
