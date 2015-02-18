@@ -123,6 +123,7 @@ body {
 .info-four {
   position: absolute;
   top: 2290px;
+  height: 700px;
   background-color: #bbb;
   padding-top: 20px;
 }
